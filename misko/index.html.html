@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мейіржан Автосалоны</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .car {
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .car img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+        .car-details {
+            flex: 1;
+        }
+        .price {
+            color: green;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .buttons {
+            margin-top: 15px;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .buy-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .credit-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .calculator {
+            margin-top: 15px;
+        }
+        .calculator input {
+            width: 60px;
+            padding: 5px;
+            margin-right: 5px;
+        }
+        .calculator span {
+            font-weight: bold;
+        }
+        footer {
+            background: #222;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .reviews {
+            background: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+        }
+    </style>
+    <script>
+        function calculatePayments(price, index) {
+            const downPayment = price * 0.3;
+            const loanAmount = price - downPayment;
+            const interestRate = 0.12; // 12% жылдық пайыз
+            const monthlyRate = interestRate / 12;
+
+            // 12 ай
+            const months12 = 12;
+            const monthlyPayment12 = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months12));
+            document.getElementById('payment12-' + index).innerText = monthlyPayment12.toFixed(0) + ' ₸';
+
+            // 24 ай
+            const months24 = 24;
+            const monthlyPayment24 = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months24));
+            document.getElementById('payment24-' + index).innerText = monthlyPayment24.toFixed(0) + ' ₸';
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Мейіржан,Дармен Автосалоны</h1>
+    <p>Автор: Мейрембекұлы Мейіржан, Бияхметов Дармен</p>
+</header>
+
+<!-- Kia K5 -->
+<div class="car">
+    <div class="car-details">
+        <h2>Kia K5 (2025)</h2>
+        <p><strong>Қозғалтқыш:</strong> 1.6L турбо, 180 а.к.</p>
+        <p><strong>Түсі:</strong> Snow White Pearl</p>
+        <p><strong>Жүріс қашықтығы:</strong> 25,000 км</p>
+        <p><strong>Иелері саны:</strong> 1</p>
+        <p class="price">Бағасы: 14 000 000 ₸</p>
+        <div class="buttons">
+            <button class="buy-btn">Сатып алу</button>
+            <button class="credit-btn" onclick="calculatePayments(14000000, 1)">Кредитке рәсімдеу</button>
+        </div>
+        <div class="calculator">
+            <p>Бастапқы төлем (30%): <span>4 200 000 ₸</span></p>
+            <p>12 айға ай сайынғы төлем: <span id="payment12-1">-</span></p>
+            <p>24 айға ай сайынғы төлем: <span id="payment24-1">-</span></p>
+        </div>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Kia_K5_Hybrid_DL3_HEV_Snow_White_Pearl_%2811%29.jpg/2560px-Kia_K5_Hybrid_DL3_HEV_Snow_White_Pearl_%2811%29.jpg" alt="Kia K5 2025">
+</div>
+
+<!-- Toyota Camry 55 -->
+<div class="car">
+    <div class="car-details">
+        <h2>Toyota Camry 55 (2015)</h2>
+        <p><strong>Қозғалтқыш:</strong> 3.5L V6, 277 а.к.</p>
+        <p><strong>Түсі:</strong> Ақ</p>
+        <p><strong>Жүріс қашықтығы:</strong> 120,000 км</p>
+        <p><strong>Иелері саны:</strong> 2</p>
+        <p class="price">Бағасы: 8 500 000 ₸</p>
+        <div class="buttons">
+            <button class="buy-btn">Сатып алу</button>
+            <button class="credit-btn" onclick="calculatePayments(8500000, 2)">Кредитке рәсімдеу</button>
+        </div>
+        <div class="calculator">
+            <p>Бастапқы төлем (30%): <span>2 550 000 ₸</span></p>
+            <p>12 айға ай сайынғы төлем: <span id="payment12-2">-</span></p>
+            <p>24 айға ай сайынғы төлем: <span id="payment24-2">-</span></p>
+        </div>
+    </div>
+    <img src="https://img2.nevesta.info/thumb/content/photo/984000/983988/202008/19778987/19778987_2i2m6ttvcuuc0oo8.jpg?thumb_params=j5Iy-GGc5Pmahou1i3IOTOiQ9q0=/fit-in/890x1780">
+    </div>
+
+    <!-- Toyota Camry 70 -->
+<div class="car">
+    <div class="car-details">
+        <h2>Toyota Camry 70 (2024)</h2>
+        <p><strong>Қозғалтқыш:</strong> 2.5L, 206 а.к.</p>
+        <p><strong>Түсі:</strong> Platinum White Pearl</p>
+        <p><strong>Жүріс қашықтығы:</strong> 10,000 км</p>
+        <p><strong>Иелері саны:</strong> 1</p>
+        <p class="price">Бағасы: 16 000 000 ₸</p>
+        <div class="buttons">
+            <button class="buy-btn">Сатып алу</button>
+            <button class="credit-btn" onclick="calculatePayments(16000000, 3)">Кредитке рәсімдеу</button>
+        </div>
+        <div class="calculator">
+            <p>Бастапқы төлем (30%): <span>4 800 000 ₸</span></p>
+            <p>12 айға ай сайынғы төлем: <span id="payment12-3">-</span></p>
+            <p>24 айға ай сайынғы төлем: <span id="payment24-3">-</span></p>
+        </div>
+    </div>
+    <img src="https://avatars.mds.yandex.net/get-autoru-vos/11794174/23caed058b42aad2d8c22239050658ea/456x342" alt="Camry 70">
+</div>
+
+<!-- Lexus LX 470 -->
+<div class="car">
+    <div class="car-details">
+        <h2>Lexus LX 470 (2007)</h2>
+        <p><strong>Қозғалтқыш:</strong> 4.7L V8, 275 а.к.</p>
+        <p><strong>Түсі:</strong> Golden Pearl</p>
+        <p><strong>Жүріс қашықтығы:</strong> 180,000 км</p>
+        <p><strong>Иелері саны:</strong> 3</p>
+        <p class="price">Бағасы: 13 000 000 ₸</p>
+        <div class="buttons">
+            <button class="buy-btn">Сатып алу</button>
+            <button class="credit-btn" onclick="calculatePayments(13000000, 4)">Кредитке рәсімдеу</button>
+        </div>
+        <div class="calculator">
+            <p>Бастапқы төлем (30%): <span>3 900 000 ₸</span></p>
+            <p>12 айға ай сайынғы төлем: <span id="payment12-4">-</span></p>
+            <p>24 айға ай сайынғы төлем: <span id="payment24-4">-</span></p>
+        </div>
+    </div>
+    <img src="https://lh4.googleusercontent.com/proxy/OJe3jQ45AbwwJ0iul6aqEnXppmIhqE5LTACwJ_ir0zFUq-4ZI1m_mlhEmrngKZW7m1VonSZsaEAWBIgd_okyEbxgXQ">
+</div>
+
+<div class="reviews">
+    <h3>Пікірлер</h3>
+    <p><strong>Айбек:</strong> Өте керемет сайт! Машиналар нақты көрсетілген.</p>
+    <p><strong>Санжар:</strong> Бағалары орынды. Kia K5-ті қарап жүр едім, жақсы ақпарат.</p>
+    <p><strong>Аружан:</strong> Camry 70 ұнады! Суреттері анық, рахмет авторға.</p>
+    <p><strong>Данияр:</strong> Lexus LX 470 жайлы толық мәлімет бар екен, супер!</p>
+</div>
+
+<footer>
+    <p>&copy; 2025 Мейіржан,Дармен Автосалоны. Барлық құқықтар қорғалған.</p>
+</footer>
+
+</body>
+</html>
